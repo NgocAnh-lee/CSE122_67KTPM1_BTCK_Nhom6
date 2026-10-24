@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Đăng ký - ALQ ship</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+</head>
+<body data-root="../" data-form="register">
+  <div class="auth-page container-fluid p-0">
+    <section class="auth-visual">
+      <div class="brand"><div><span class="bi bi-box-seam"></span></div><strong>ALQ <span>ship</span></strong></div>
+      <div><span class="badge badge-blue">NỀN TẢNG LOGISTICS THÔNG MINH</span>
+        <h1>Mọi hành trình.<br><span>Một nhịp kết nối.</span></h1>
+        <p>Theo dõi, giao nhận và xử lý ngoại lệ trên một nền tảng dành cho mọi vai trò.</p></div>
+      <div></div>
+    </section>
+    <section class="auth-form-wrap">
+      <form class="auth-form" id="form" novalidate>
+        <a class="back-link" href="login.html">← Quay lại đăng nhập</a>
+        <small>ĐĂNG KÝ THÀNH VIÊN</small><h2>Tạo tài khoản mới</h2>
+        <p>Hãy tự chọn vai trò sử dụng. Quản trị viên sẽ chỉ kiểm tra và duyệt thông tin đăng ký.</p>
+        <div class="form-grid">
+          <label class="field-label">Họ và tên *<input id="name" placeholder="Nguyễn Văn An"></label>
+          <label class="field-label">Số điện thoại *<input id="phone" value="0123456789" inputmode="numeric"></label>
+          <label class="field-label full">Email *<input id="email" type="email" placeholder="an.nv@alqship.vn"></label>
+          <label class="field-label">Khu vực hoạt động<select id="area"><option>Cầu Giấy</option><option>Ba Đình</option><option>Nam Từ Liêm</option></select></label>
+          <label class="field-label">Vai trò đăng ký<select id="role"><option>Tài xế</option><option>Điều phối viên</option><option>Người gửi</option><option>Người nhận</option></select></label>
+        </div>
+        <label class="field-label">Mật khẩu<input id="password" type="password" placeholder="Tối thiểu 6 ký tự"></label>
+        <button class="primary full" type="submit">Gửi yêu cầu tạo tài khoản</button>
+        <div class="demo-hint">Sau khi gửi, tài khoản sẽ xuất hiện trong hàng đợi chờ quản trị viên duyệt.</div>
+        <div class="auth-error" id="error" hidden><span class="bi bi-exclamation-triangle"></span><span id="error-text"></span></div>
+      </form>
+      <div class="auth-form" id="done" hidden>
+        <div class="success-state"><div><span class="bi bi-check-lg fs-2"></span></div><h2 id="done-title"></h2><p id="done-text"></p>
+          <a class="primary full text-decoration-none" href="login.html">Về trang đăng nhập</a></div>
+      </div>
+    </section>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/pages/auth-forms.js"></script>
+</body>
+</html>

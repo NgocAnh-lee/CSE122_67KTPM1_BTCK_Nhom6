@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tạo đơn gửi mới - ALQ ship</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="../../css/style.css" rel="stylesheet">
+</head>
+<body data-root="../../">
+  <div id="page-content">
+    <div class="reassign-flow" id="flow"></div>
+    <div class="form-layout">
+      <form class="panel shipment-form" id="form" novalidate>
+        <div data-step="1"><h3>Thông tin người nhận</h3><div class="form-grid">
+          <label class="field-label">Họ và tên *<input id="rname" value="Phạm Minh Phương"></label>
+          <label class="field-label">Số điện thoại *<input id="rphone" value="0123456789" inputmode="numeric"></label>
+          <label class="field-label full">Địa chỉ chi tiết *<input id="raddr" value="18 Trần Thái Tông, Cầu Giấy, Hà Nội"></label></div></div>
+        <div data-step="2" hidden><h3>Thông tin kiện hàng</h3><div class="form-grid">
+          <label class="field-label">Tên hàng hoá *<input id="pname" placeholder="Ví dụ: Quần áo"></label>
+          <label class="field-label">Khối lượng (kg) *<input id="pweight" type="number" step="0.1" value="1.5"></label>
+          <label class="field-label">Giá trị hàng hoá<input id="pvalue" value="850.000đ"></label>
+          <label class="field-label">Thu hộ COD<input id="pcod" value="0đ"></label></div></div>
+        <div data-step="3" hidden><h3>Chọn dịch vụ</h3><div class="service-options" id="services"></div></div>
+        <div data-step="4" hidden><div class="success-state"><div><span class="bi bi-check-lg fs-2"></span></div><h2>Thông tin đã sẵn sàng</h2><p id="confirm-text"></p></div></div>
+        <div class="text-danger small mt-2" id="err" hidden></div>
+        <div class="form-actions"><button class="secondary" type="button" id="back">Quay lại</button><button class="primary" type="submit" id="next">Tiếp tục</button></div>
+      </form>
+      <aside class="panel summary-card"><h3>Tạm tính cước phí</h3>
+        <div><span>Dịch vụ</span><strong id="s-name"></strong></div><div><span>Phí vận chuyển</span><strong id="s-fee"></strong></div>
+        <div><span>Phụ phí</span><strong>0đ</strong></div><div><span>Tổng thanh toán</span><strong id="s-total"></strong></div></aside>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/data.js"></script>
+  <script src="../../js/pages/sender-create.js"></script>
+</body>
+</html>

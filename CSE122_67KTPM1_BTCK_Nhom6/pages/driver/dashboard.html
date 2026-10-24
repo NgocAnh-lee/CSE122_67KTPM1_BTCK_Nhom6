@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ca làm việc - ALQ ship</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="../../css/style.css" rel="stylesheet">
+</head>
+<body data-root="../../">
+  <div id="page-content">
+    <section class="shift-card" id="shift">
+      <div><span class="badge" id="shift-badge"></span><h2 id="shift-title"></h2><p>14 điểm dừng · 18 kiện hàng · 28.6 km dự kiến</p></div>
+      <button id="shift-btn"></button>
+    </section>
+    <div class="kpis four">
+      <div><span>Đơn được giao</span><strong>18</strong><p>14 điểm dừng</p></div>
+      <div><span>Đã hoàn thành</span><strong id="done-count">8</strong><p class="positive">44% tiến độ</p></div>
+      <div><span>Điểm uy tín</span><strong>96<small>/100</small></strong><p class="positive">Xếp loại Xuất sắc</p></div>
+      <div><span>Đánh giá khách hàng</span><strong>4.8<small>/5</small></strong><p>126 lượt đánh giá</p></div>
+    </div>
+    <div class="driver-policy"><span class="bi bi-exclamation-triangle"></span>
+      <div><strong>Quy định khiếu nại 24 giờ</strong><p>Khi đơn hàng có vấn đề, bạn cần gửi khiếu nại trong vòng 24 giờ từ lúc phát sinh. Quá hạn chưa phản hồi sẽ bị trừ điểm uy tín.</p></div>
+      <a class="btn btn-primary btn-sm" href="exception-create.html">Tạo khiếu nại</a></div>
+    <div class="quick-grid">
+      <button data-go="route-stops"><span class="bi bi-signpost-split fs-4"></span><strong>Mở lộ trình</strong><span>Xem thứ tự điểm giao</span></button>
+      <button data-go="orders"><span class="bi bi-inbox fs-4"></span><strong>Kiểm tra đơn</strong><span>18 đơn được phân công</span></button>
+      <button data-go="proof"><span class="bi bi-check2-circle fs-4"></span><strong>Gửi minh chứng</strong><span>Ảnh chờ tải lên</span></button>
+    </div>
+    <section class="panel customer-ratings">
+      <div class="panel-title"><div><h3>Đánh giá gần đây từ khách hàng</h3><p>Đánh giá được ghi nhận trong 14 ngày sau khi giao</p></div><span class="badge badge-green">4.8 / 5</span></div>
+      <div id="ratings"></div>
+    </section>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/data.js"></script>
+  <script src="../../js/pages/driver-dashboard.js"></script>
+</body>
+</html>
