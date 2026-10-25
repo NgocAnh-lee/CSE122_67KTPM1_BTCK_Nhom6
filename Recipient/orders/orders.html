@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Đơn hàng của tôi - ALQ ship</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="../../css/style.css" rel="stylesheet">
+</head>
+<!-- 
+     data-root: đường dẫn thư mục gốc tương đối để chương trình xác định vị trí tài nguyên.
+     data-role="recipient": xác định vai trò hiện tại là người nhận.
+     data-page: xác định trang hiện tại là trang đơn hàng của người nhận.
+     data-title: cung cấp tiêu đề trang cho JavaScript sử dụng.
+     data-subtitle: cung cấp tiêu đề phụ mô tả chức năng tra cứu đơn hàng. -->
+<body data-root="../../" data-role="recipient" data-page="recipient/orders" data-title="Đơn hàng của tôi" data-subtitle="Tra cứu tất cả đơn đang nhận">
+  <div id="page-content">
+    <div class="toolbar">
+      <!-- Hiển thị biểu tượng kính lúp từ thư viện Bootstrap Icons. -->
+      <div class="search"><span class="bi bi-search"></span><input id="q" placeholder="Tìm mã đơn, người nhận, địa chỉ..." aria-label="Tìm kiếm"></div>
+      <!-- Tạo vùng chứa các nút lọc trạng thái đơn hàng.
+           id="filters": để thêm các nút như Tất cả, Đang giao, Đã giao và Ngoại lệ vào đây. -->
+      <div class="inline-filters" id="filters"></div>
+    </div>
+    <section class="panel table-wrap">
+      <!-- thead : Chứa hàng tiêu đề của bảng
+           tr: tạo 1 hàng tiêu đề
+           th: tạo ô tiêu đề trong hàng -->
+      <table><thead><tr><th>Mã vận đơn</th><th>Người nhận</th><th>Địa chỉ</th><th>Trạng thái</th><th>Cập nhật</th><th></th></tr></thead>
+      <!--Tạo phần thân bảng-->
+      <tbody id="rows"></tbody></table>
+    </section>
+    <!-- Tạo thông báo khi không tìm thấy đơn hàng phù hợp.
+           class="empty-inline": dùng CSS để định dạng thông báo.
+           id="empty": giúp JavaScript điều khiển việc hiện hoặc ẩn thông báo.
+           hidden: ban đầu ẩn thông báo; JavaScript sẽ hiện nếu danh sách không có đơn hàng. -->
+      <div class="empty-inline" id="empty" hidden>Không có đơn hàng trong bộ lọc này.</div>
+    </section>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/data.js"></script>
+  <script src="../../js/pages/orders.js"></script>
+</body>
+</html>
