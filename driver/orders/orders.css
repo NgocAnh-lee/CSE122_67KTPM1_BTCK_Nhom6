@@ -1,0 +1,109 @@
+.order-page{
+    max-width: 1080px;
+}
+.page-heading h1 {
+    color: #172033;
+}
+.driver-order-list {
+    display: grid;
+    gap: 16px;
+}
+.order-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 24px;
+    border: 1px solid #e1e5ed;
+    border-radius: 14px;
+    background: #fff;
+}
+.order-card.done {
+    background: #f3faf6;
+    border-color: #bfe6cf;
+}
+.order-check {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 2px solid #cfd5df;
+    border-radius: 9px;
+    background: #fff;
+    color: #fff;
+    font-size: 1.25rem;
+    transition: all 0.2s ease;
+}
+
+.order-check.checked {
+    background: #1f8f5f;
+    border-color: #1f8f5f;
+    color: #fff;
+}
+
+.order-check i {
+    font-size: 1.4rem;
+    line-height: 1;
+}
+.order-info {
+    flex: 1;
+    min-width: 0;
+}
+.status {
+    display: inline-block;
+    padding: 4px 9px;
+    border-radius: 6px;
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.st-done {
+    background: #e3f4ea;
+    color: #1f8f5f;
+}
+.st-wait {
+    background: #eceef2;
+    color: #5b6472;
+}
+.st-going {
+    background: #e7efff;
+    color: #2552c9;
+}
+.order-card h2 {
+    margin: 7px 0 4px;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.order-card p {
+    margin: 0;
+    color: #6c757d;
+    font-size: .875rem;
+}
+.order-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+}
+@media (max-width: 700px) {
+    .order-page {
+        padding-inline: 16px;
+    }
+
+    .order-card {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 18px;
+    }
+
+    .order-info {
+        flex-basis: calc(100% - 56px);
+    }
+
+    .order-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
