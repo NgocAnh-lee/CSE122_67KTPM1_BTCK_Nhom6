@@ -6,12 +6,12 @@ const orders = [
 ];
 
 const statusLabels = {
-  done: ["Hoàn thành", "st-done"],
-  wait: ["Chờ giao", "st-wait"],
-  going: ["Đang giao", "st-going"],
+  done: ["Hoàn thành", "text-bg-success"],
+  wait: ["Chờ giao", "text-bg-secondary"],
+  going: ["Đang giao", "text-bg-primary"],
 };
 const picked = new Set(orders.filter((order) => order.status === "done").map((order) => order.id));
-const projectRoot = "../CSE122_67KTPM1_BTCK_Nhom6/";
+const projectRoot = "../../CSE122_67KTPM1_BTCK_Nhom6/";
 const orderList = document.getElementById("orderList");
 document.getElementById("subtitle").textContent = `${orders.length} đơn trên tuyến CG-04`;
 
@@ -20,14 +20,14 @@ function renderOrders() {
     const [label, statusClass] = statusLabels[order.status];
     const isPicked = picked.has(order.id);
     return `
-      <article class="order-card ${order.status === "done" ? "done" : ""}" data-id="${order.id}">
-        <button class="order-check ${isPicked ? "checked" : ""}" type="button" data-act="pick" aria-label="${isPicked ? "Bỏ đánh dấu" : "Đánh dấu"} ${order.id}" aria-pressed="${isPicked}">
+      <article class="card order-card d-flex flex-row align-items-center gap-3 p-3 ${order.status === "done" ? "bg-success-subtle border-success-subtle" : ""}" data-id="${order.id}">
+        <button class="btn ${isPicked ? "btn-success" : "btn-outline-secondary"} order-check p-0 flex-shrink-0" type="button" data-act="pick" aria-label="${isPicked ? "Bỏ đánh dấu" : "Đánh dấu"} ${order.id}" aria-pressed="${isPicked}">
           ${isPicked ? '<i class="bi bi-check-lg" aria-hidden="true"></i>' : ""}
         </button>
-        <div class="order-info">
-          <span class="status ${statusClass}">${label}</span>
-          <h2>${order.name}</h2>
-          <p>${order.id} · ${order.address} · ${order.time}</p>
+        <div class="order-info flex-grow-1">
+          <span class="badge ${statusClass}">${label}</span>
+          <h2 class="h6 fw-semibold my-2">${order.name}</h2>
+          <p class="small text-secondary mb-0">${order.id} · ${order.address} · ${order.time}</p>
         </div>
         <div class="order-actions">
           <a class="btn btn-outline-secondary" href="${projectRoot}pages/driver/stop-detail.html?id=${encodeURIComponent(order.id)}">Xem chi tiết</a>

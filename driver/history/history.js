@@ -1,3 +1,4 @@
+// tạo biến lữu trữ lịch sử làm bài
 const historyData = {
   stats: [
     ["Tổng quan", "14 ca tháng này", "3 ca gần nhất"],
@@ -21,7 +22,7 @@ const modalStatus = document.getElementById('modalStatus');
 
 const LABELS = ['Tổng quan', 'Đang hoạt động', 'Chỉ số chất lượng'];
 const TONES = ['blue', 'green', 'gray'];
-
+// hiển thị các thẻ thống kê
 function renderKpis() {
   historyData.stats.forEach((entry, index) => {
     const card = document.createElement('div');
@@ -33,7 +34,7 @@ function renderKpis() {
     kpis.appendChild(card);
   });
 }
-
+// hàm để mở hộp thoại
 function openModal(item) {
   modalTitle.textContent = item[0];
   modalSubtitle.textContent = 'Lịch sử ca làm việc';
@@ -69,7 +70,7 @@ function renderList() {
     list.appendChild(row);
   });
 }
-
+// gắn sự kiện cho nút thêm mới
 document.getElementById('add').addEventListener('click', () => {
   const item = ['Ca mới', 'Đang tạo dữ liệu ca làm việc', 'Chưa lưu'];
   openModal(item);
