@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Đơn hàng của tôi - ALQ ship</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="../../css/common.css" rel="stylesheet">
+  <link href="../../css/orders.css" rel="stylesheet">
+</head>
+
+<!-- Các thuộc tính data-* là cấu hình của trang: vai trò, tên trang, tiêu đề, phụ đề.
+     Thêm data-mode="billing" để chuyển sang trang phí vận chuyển. -->
+<body data-root="../../" data-role="recipient" data-page="recipient/orders" data-title="Đơn hàng của tôi" data-subtitle="Tra cứu tất cả đơn đang nhận">
+  <div id="page-content">
+    <div class="toolbar">
+      <!-- Ô tìm kiếm theo mã đơn, người nhận, địa chỉ -->
+      <div class="search"><span class="bi bi-search"></span><input id="q" placeholder="Tìm mã đơn, người nhận, địa chỉ..." aria-label="Tìm kiếm"></div>
+      <!-- Nơi chứa các nút lọc trạng thái, được tạo bằng JS -->
+      <div class="inline-filters" id="filters"></div>
+    </div>
+
+    <section class="panel table-wrap">
+      <!-- Bảng danh sách đơn hàng gồm 6 cột -->
+      <table><thead><tr><th>Mã vận đơn</th><th>Người nhận</th><th>Địa chỉ</th><th>Trạng thái</th><th>Cập nhật</th><th></th></tr></thead>
+      <!-- Các dòng đơn hàng được thêm vào đây bằng JS -->
+      <tbody id="rows"></tbody></table>
+      <!-- Thông báo khi không có đơn nào phù hợp, mặc định ẩn -->
+      <div class="empty-inline" id="empty" hidden>Không có đơn hàng trong bộ lọc này.</div>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/data.js"></script>
+  <script src="../../js/pages/orders.js"></script>
+</body>
+</html>

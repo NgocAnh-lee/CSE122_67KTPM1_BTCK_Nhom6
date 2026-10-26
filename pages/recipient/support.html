@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width= device-width, initial-scale=1.0">
+        <title>Phản hồi sự cố - ALQ ship</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.2/font/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="../../css/common.css">
+        <link rel="stylesheet" href="../../css/support.css">
+    </head>
+
+    <!-- Các thuộc tính data-* là cấu hình của trang: vai trò, tên trang, tiêu đề, phụ đề -->
+    <body data-root="../../" data-role="recipient" data-page="recipient/support" data-title="Phản hồi sự cố" data-subtitle="Gửi yêu cầu hỗ trợ đén trung tâm điều phối">
+        <div id="page-content">
+            <!-- Bố cục chia 2 phần: bên trái là form gửi phản hồi, bên phải là lịch sử yêu cầu -->
+            <div class="form-layout">
+                <section class="panel">
+                    <!-- Form gửi phản hồi, novalidate để JS tự kiểm tra dữ liệu thay vì trình duyệt -->
+                    <form id="form" novalidate>
+                        <div class="section-heading"><span>01</span></div><h3>Thông tin yêu cầu</h3><p>Chúng tôi chuyển phản hồi trực tiếp đến điều phối viên</p>
+                        <!-- Danh sách đơn hàng, để trống, JS thêm các lựa chọn vào -->
+                        <label class="field-label">Đơn hàng<select id="order"></select></label>
+                        <!-- Loại vấn đề: 4 lựa chọn cố định -->
+                        <label class="field-label">Vấn đề cần hỗ trợ<select id="issue"><option>Tài xế chưa đến</option><option>Muốn đổi thời gian giao</option><option>Hàng có dấu hiệu hư hỏng</option><option>Vấn đề khác</option></select></label>
+                        <!-- Nội dung chi tiết, dòng báo lỗi bên dưới mặc định ẩn, JS hiện khi nhập thiếu -->
+                        <label class="field-label">Nội dung chi tiết <textarea id="detail" placeholder="Mô tả tình huống để chúng tôi hỗ trợ nhanh chóng hơn..."></textarea><small id="err" class="text-danger" hidden></small></label>
+                        <button class="primary-full" type="submit">Gửi đến điều phối viên </button>
+                    </form>
+
+                    <!-- Màn hình thông báo thành công, mặc định ẩn, hiện sau khi gửi xong thì form bị ẩn đi -->
+                    <div class="success-state" id="done" hidden>
+                        <div><span class="bi bi-check-lg fs-2"></span></div>
+                        <h2>Đã gửi phản hồi</h2>
+                        <!-- Hiện mã yêu cầu, JS điền vào -->
+                        <p id="code"></p>
+                        <!-- Quay lại form để tạo phản hồi mới -->
+                        <button class="secondary" id="again">Tạo phản hồi khác</button>
+                    </div>
+                </section>
+
+                <!-- Cột bên phải: các yêu cầu đã gửi gần đây -->
+                <aside class="panel"><h3>Yêu cầu gần đây</h3>
+                <!-- Danh sách yêu cầu, JS thêm vào -->
+                <div class="timeline" id="history"></div>
+                <!-- Thông báo khi chưa có yêu cầu nào -->
+                <div class="empty-inline" id="empty" hidden>Chưa có yêu cầu nào.</div></aside>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="../../js/main.js"></script>
+        <script src="../../js/pages/support.js"></script>
+    </body>
+</html>

@@ -1,0 +1,76 @@
+/* Nút "Đánh dấu tất cả đã đọc" khi bị vô hiệu hóa: mờ đi, con trỏ hiện biểu tượng cấm */
+#read-all:disabled{
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+/* Khung chứa danh sách: bỏ padding, overflow hidden để bo góc của panel không bị item đè lên */
+.notification-list{
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Mỗi thông báo là một <button> chiếm full chiều ngang, xếp icon + nội dung theo hàng ngang.
+   Nền xanh nhạt = thông báo CHƯA đọc. position: relative để chấm xanh <b> định vị theo nó */
+.notification-list > button {
+  width: 100%;
+  display: flex;
+  gap: 13px;
+  text-align: left;
+  background: #f6f9ff;
+  border: 0;
+  position: relative;
+  border-bottom: 1px solid #e6eaf0; /* đường kẻ ngăn cách giữa các thông báo */
+  padding: 17px 20px;
+}
+
+/* Thông báo cuối cùng không cần đường kẻ dưới */
+.notification-list > button:last-child{border-bottom:0 ;}
+
+/* Hiệu ứng khi rê chuột */
+.notification-list > button:hover{background: #eef4ff;}
+
+/* Thông báo ĐÃ đọc (JS thêm class "read"): nền trắng */
+.notification-list > button.read{background: white;}
+/* ⚠ Lỗi: "none#f8faff" không hợp lệ nên dòng này bị trình duyệt bỏ qua.
+   Nên sửa thành: background: #f8faff; */
+.notification-list > button.read:hover{background: none#f8faff;}
+
+/* Ô icon bên trái: hình vuông bo góc, icon căn giữa; flex: none để không bị co lại */
+.notification-list > button > i{
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: #e6efff;
+  color: #2865e8;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+
+/* Phần nội dung chữ: chiếm hết chỗ còn lại; min-width: 0 giúp chữ dài tự xuống dòng thay vì tràn */
+.notification-list > button > div{flex:1; min-width: 0;}
+
+/* Tiêu đề, nội dung, thời gian của thông báo (cỡ chữ giảm dần) */
+.notification-list h3{font-size: 13px; margin: 1px 0 5px;}
+.notification-list p{font-size: 10px; color: #69758a; margin: 0 0 6px;}
+.notification-list span{font-size: 8px; color: #99a1ae;}
+
+/* Chấm xanh nhỏ ở góc phải trên: dấu hiệu "chưa đọc" */
+.notification-list b{
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #2865e8;
+  position: absolute;
+  right: 20px;
+  top: 22px;
+}
+
+/* Màn hình nhỏ (≤ 700px): giảm padding, thu nhỏ icon, chỉnh lại vị trí chấm xanh, nút "đọc tất cả" full chiều ngang */
+@media (max-width: 700px){
+  .notification-list > button{padding: 14px 15px;}
+  .notification-list > button >i{width: 34px;height: 34px;}
+  .notification-list b{right:15px; top:18px;}
+  #read-all{width:100%;}
+}

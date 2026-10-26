@@ -1,0 +1,231 @@
+/* =====================================================================
+   common.css - CSS DÙNG CHUNG cho 3 trang: orders, notifications, support
+   ===================================================================== */
+
+/* ---------------------------------------------------------------------
+   1. NỀN TẢNG: phông chữ, reset, màu nền
+   --------------------------------------------------------------------- */
+/* Cài đặt chung cho cả trang: chọn kiểu chữ, màu chữ, màu nền, và xoá các khoảng cách thừa mà trình duyệt tự thêm vào. */
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #172033;
+  background: #f4f6fa;
+  font-synthesis: none;
+}
+* { box-sizing: border-box; }                       /* padding/border tính vào chiều rộng */
+body { margin: 0; min-width: 320px; min-height: 100vh; }
+button, input, textarea, select { font: inherit; }  /* form dùng cùng phông với trang */
+button { cursor: pointer; }
+[hidden] { display: none !important; }              /* thuộc tính hidden luôn ẩn thật sự (JS dùng .hidden) */
+
+
+/* ---------------------------------------------------------------------
+   2. KHUNG TRANG (do initShell trong main.js tạo ra): sidebar + header
+   --------------------------------------------------------------------- */
+.app-shell { min-height: 100vh; }
+
+/* Menu bên trái (màu xanh đen), đứng yên khi cuộn trang. Gồm: logo, ô cho biết vai trò của người dùng, các mục menu (mục đang mở được tô màu xanh), và nút Đăng xuất ở dưới cùng. */
+/* Thanh menu bên trái, cố định */
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 248px;
+  background: #101b34;
+  color: #dce4f5;
+  padding: 25px 16px 18px;
+  display: flex;
+  flex-direction: column;
+  z-index: 20;
+}
+
+/* Logo "ALQ ship" */
+.brand { display: flex; align-items: center; gap: 10px; padding: 0 8px 25px; font-size: 19px; color: white; letter-spacing: -.5px; }
+.brand > div { width: 34px; height: 34px; border-radius: 10px; background: #3974f6; display: grid; place-items: center; }
+.brand strong span { color: #73a1ff; }
+
+/* Ô hiển thị vai trò hiện tại */
+.role-picker { margin: 4px 2px 22px; }
+.role-picker small { font-size: 9px; letter-spacing: 1.25px; color: #76839e; font-weight: 700; display: block; padding: 0 8px 8px; }
+.role-picker > button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #eaf0ff;
+  border: 1px solid #2a3858;
+  background: #172542;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: left;
+}
+.role-picker > button > span { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: #285dd2; font-size: 11px; font-weight: 800; }
+.role-picker strong { font-size: 12px; }
+.role-picker p { font-size: 10px; color: #8290aa; margin: 2px 0 0; }
+
+/* Danh sách menu. main.js tạo menu bằng thẻ <a class="nav-btn">,
+   nên cần style cho "a" và ".nav-btn" (không chỉ "button") */
+.sidebar nav { display: flex; flex-direction: column; gap: 5px; overflow-y: auto; min-height: 0; padding-right: 2px; }
+.sidebar nav button,
+.sidebar nav a,
+.nav-btn {
+  height: 44px;
+  flex: none;
+  border: 0;
+  color: #98a6c0;
+  background: transparent;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 13px;
+  font-size: 13px;
+  text-align: left;
+  text-decoration: none;               /* bỏ gạch chân của thẻ <a> */
+}
+.sidebar nav button:hover, .sidebar nav a:hover, .nav-btn:hover { background: #172542; color: white; }
+/* Mục menu của trang đang mở */
+.sidebar nav button.active, .sidebar nav a.active, .nav-btn.active { background: #2663e6; color: white; box-shadow: 0 5px 18px #0b1025; }
+
+/* Nút Đăng xuất ở cuối sidebar */
+.sidebar-bottom { margin-top: auto; }
+.help { border: 1px solid #283550; background: #15213a; color: white; border-radius: 10px; width: 100%; padding: 10px; display: flex; align-items: center; gap: 10px; text-align: left; }
+.help > span { width: 28px; height: 28px; background: #233251; border-radius: 50%; display: grid; place-items: center; font-weight: 700; }
+.help strong { font-size: 11px; }
+.help p { margin: 1px 0; color: #8290aa; font-size: 9px; }
+
+/* Phần nội dung chính nằm bên phải menu (chừa 248px cho menu khỏi đè lên). Phía trên cùng là thanh tiêu đề: tên trang ở bên trái, chuông thông báo và ảnh đại diện ở bên phải. */
+/* Vùng nội dung chính, chừa chỗ cho sidebar 248px */
+main { margin-left: 248px; padding: 0 34px 50px; max-width: 1680px; }
+
+/* Đầu trang: tiêu đề + chuông thông báo + avatar */
+.page-header { min-height: 100px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #e2e6ee; margin-bottom: 26px; }
+.page-header h1 { margin: 0 0 5px; font-size: 23px; letter-spacing: -.6px; }
+.page-header p { color: #778198; font-size: 12px; margin: 0; }
+.header-actions { display: flex; gap: 13px; align-items: center; }
+.icon-button { position: relative; display: grid; place-items: center; width: 36px; height: 36px; background: white; border: 1px solid #dfe4ec; border-radius: 9px; color: #536078; padding: 0; }
+.notify-dot { width: 6px; height: 6px; background: #f55358; border-radius: 50%; position: absolute; top: 7px; right: 7px; box-shadow: 0 0 0 2px white; }
+.avatar { width: 37px; height: 37px; border-radius: 10px; background: linear-gradient(135deg, #dde7ff, #b7cbfb); color: #254f9e; display: grid; place-items: center; font-size: 11px; font-weight: 800; }
+
+/* Menu dành cho điện thoại, nằm ở đầu trang. Bình thường đang bị ẩn, chỉ hiện khi màn hình hẹp (xem phần 5 ở cuối file). */
+/* Thanh menu trên điện thoại (mặc định ẩn, hiện ở media query cuối file) */
+.mobile-nav { display: none; }
+.mobile-role { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; background: #285dd2; color: white; font-size: 9px; font-weight: 800; }
+.mobile-logout { display: grid; place-items: center; border: 1px solid #33415f; border-radius: 8px; background: #1c2a48; color: white; width: 34px; height: 34px; }
+
+
+/* ---------------------------------------------------------------------
+   3. THÀNH PHẦN DÙNG CHUNG: nút, thẻ (panel), nhãn trạng thái (badge)
+   --------------------------------------------------------------------- */
+
+/* Các loại nút: .primary là nút xanh (nút quan trọng), .secondary là nút trắng viền xám (nút phụ), .text-btn là nút trông như chữ xanh. */
+/* Nút chính (xanh) */
+.primary {
+  border: 0;
+  color: white;
+  background: #2865e8;
+  font-weight: 650;
+  border-radius: 8px;
+  padding: 10px 17px;
+  font-size: 12px;
+  margin-right: 5px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+.primary:hover { background: #1f55c7; }
+.primary:disabled { background: #a9b8d7; cursor: not-allowed; }
+.primary.full { width: 100%; margin: 0; padding: 12px; }
+
+/* Nút phụ (viền xám, nền trắng): nút lọc, nút Đóng, nút "Đánh dấu đã đọc" */
+.secondary {
+  border: 1px solid #d9dfe8;
+  background: white;
+  color: #536078;
+  border-radius: 8px;
+  padding: 9px 13px;
+  font-size: 10px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.secondary.full { width: 100%; padding: 11px; }
+
+/* Nút dạng chữ xanh (vd: "Xem >") */
+.text-btn { color: #2865e8; background: transparent; border: 0; font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }
+
+/* .panel là khung trắng bo góc để chứa nội dung. .badge là nhãn nhỏ hiện trạng thái đơn (Đã giao, Đang giao...), mỗi trạng thái một màu. */
+/* Thẻ nội dung màu trắng bo góc */
+.panel { background: white; border: 1px solid #e1e5ed; border-radius: 13px; padding: 21px; box-shadow: 0 3px 14px #15224308; }
+.panel h3 { margin: 0; font-size: 14px; }
+.panel-title { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 19px; }
+.panel-title h2 { margin: 9px 0 4px; font-size: 20px; }
+.panel-title p, .panel-title > div > p { margin: 4px 0 0; color: #8992a4; font-size: 10px; }
+
+/* Nhãn trạng thái nhỏ: .badge-green, .badge-red... (khớp BADGE_TONE trong main.js) */
+.badge { display: inline-flex; align-items: center; width: max-content; border-radius: 5px; padding: 4px 7px; font-size: 8px; font-weight: 800; letter-spacing: .5px; }
+.badge-blue { background: #e6efff; color: #2862d8; }
+.badge-green { background: #e5f7ef; color: #16815a; }
+.badge-orange { background: #fff0df; color: #bf6918; }
+.badge-red { background: #fee9e9; color: #d73c47; }
+.badge-gray { background: #eef0f4; color: #677186; }
+.badge-purple { background: #eee8ff; color: #6848c5; }
+
+/* Phần form: .field-label là tên ô + ô nhập (tên nằm trên, ô nằm dưới), .form-actions là hàng nút ở cuối form, .empty-inline là dòng chữ báo "chưa có dữ liệu" khi danh sách trống. */
+/* Form cơ bản: nhãn + ô nhập, hàng nút cuối form */
+.field-label { display: flex; flex-direction: column; gap: 7px; font-size: 10px; font-weight: 700; color: #455067; margin: 13px 0; }
+.field-label textarea, .field-label input, select { border: 1px solid #dce1e9; border-radius: 8px; padding: 11px; outline: none; background: white; font-size: 11px; color: #344056; }
+.field-label textarea { min-height: 82px; resize: vertical; }
+.field-label small { color: #929bab; font-weight: 400; text-align: right; }
+.form-actions { display: flex; justify-content: flex-end; gap: 8px; border-top: 1px solid #edf0f3; padding-top: 16px; margin-top: 20px; }
+.form-actions .primary { margin: 0; }
+
+/* Dòng thông báo "danh sách trống" (orders và support dùng) */
+.empty-inline { text-align: center; padding: 30px; color: #8791a3; font-size: 10px; }
+
+
+/* ---------------------------------------------------------------------
+   4. CỬA SỔ MODAL (nền + thẻ) và THÔNG BÁO NỔI (toast)
+   --------------------------------------------------------------------- */
+/* Modal là hộp thoại nổi giữa màn hình, phía sau tối đi. Toast là thông báo nhỏ hiện ở góc phải dưới màn hình rồi tự biến mất. */
+.modal-backdrop { position: fixed; inset: 0; background: #10192c99; backdrop-filter: blur(3px); z-index: 200; display: grid; place-items: center; padding: 20px; }
+.modal-card { width: min(620px, 100%); max-height: 90vh; overflow: auto; background: white; border-radius: 15px; padding: 25px; box-shadow: 0 25px 70px #09112666; }
+
+/* Thông báo nổi góc phải dưới (hàm notify trong main.js) */
+.toast { position: fixed; right: 24px; bottom: 24px; background: #17223a; color: white; border-radius: 11px; padding: 13px 15px; display: flex; gap: 10px; align-items: center; min-width: 310px; box-shadow: 0 12px 35px #17223a55; z-index: 100; animation: toastin .25s ease; }
+.toast > i { width: 28px; height: 28px; border-radius: 50%; background: #2a956c; display: grid; place-items: center; }
+.toast strong { font-size: 11px; }
+.toast p { font-size: 9px; color: #abb7cc; margin: 3px 0; }
+.toast button { margin-left: auto; border: 0; background: transparent; color: #aeb8c9; font-size: 18px; }
+@keyframes toastin { from { transform: translateY(15px); opacity: 0; } }
+
+
+/* ---------------------------------------------------------------------
+   5. RESPONSIVE CHO KHUNG TRANG
+   --------------------------------------------------------------------- */
+/* Làm trang gọn lại cho màn hình nhỏ. Màn hình vừa (từ 980px trở xuống): ẩn menu bên trái, hiện menu ở đầu trang. Điện thoại (từ 700px trở xuống): thu nhỏ chữ và khoảng cách, ẩn ảnh đại diện. */
+
+/* Máy tính bảng (<= 980px): ẩn sidebar, hiện thanh menu trên cùng */
+@media (max-width: 980px) {
+  .sidebar { display: none; }
+  .mobile-nav { height: 64px; padding: 10px 18px; display: flex; align-items: center; gap: 10px; background: #101b34; position: sticky; top: 0; z-index: 20; }
+  .mobile-nav .brand { padding: 0; margin-right: auto; }
+  .mobile-nav select { background: #1c2a48; border-color: #33415f; color: white; padding: 8px; max-width: 165px; }
+  main { margin-left: 0; padding: 0 20px 40px; }
+  .page-header { min-height: 85px; }
+}
+
+/* Điện thoại (<= 700px) */
+@media (max-width: 700px) {
+  .mobile-nav { height: auto; flex-wrap: wrap; }
+  .mobile-nav .brand { width: 100%; padding-bottom: 5px; }
+  .mobile-nav select { flex: 1; max-width: none; min-width: 120px; }
+  main { padding: 0 13px 30px; }
+  .page-header { min-height: 78px; margin-bottom: 18px; }
+  .page-header h1 { font-size: 19px; }
+  .page-header p { font-size: 10px; }
+  .header-actions .avatar { display: none; }
+  .toast { left: 13px; right: 13px; bottom: 13px; min-width: 0; }
+}

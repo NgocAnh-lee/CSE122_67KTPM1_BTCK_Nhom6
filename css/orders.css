@@ -1,0 +1,55 @@
+/* Thanh công cụ: ô tìm kiếm và các nút lọc nằm cùng một hàng */
+.toolbar{
+    display: flex;
+    gap:9px;
+    margin-bottom: 15px;
+}
+
+/* Khung ô tìm kiếm: giãn ra theo chiều ngang nhưng tối đa 410px */
+.search{
+    height: 38px;
+    background: white;
+    border:1px solid #dce1e9;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0 11px;
+    color: #8c96a7;
+    flex: 1;
+    max-width: 410px;
+}
+
+/* Ô nhập bên trong: bỏ viền để trông như một phần của khung ngoài */
+.search input{
+    border: 0;
+    outline: 0;
+    padding: 0 9px;
+    width: 100%;
+    font-size: 10px;
+}
+
+/* Nhóm nút lọc xếp ngang */
+.inline-filters{display: flex; gap:7px; align-items: center;}
+.inline-filters input, .inline-filters select {padding: 8px; border: 1px solid #dce1e9; border-radius: 7px;}
+
+/* Cho bảng cuộn ngang khi màn hình hẹp */
+.table-warp{overflow: auto;}
+
+/* Bảng: rộng hết khung, tối thiểu 670px, các đường viền dính liền nhau */
+table {width: 100%; border-collapse: collapse; min-width:670px ;}
+
+/* Tiêu đề cột: chữ nhỏ, xám, viết hoa */
+th{text-align: left; color: #8791a4; font-size: 8px; text-transform: uppercase; letter-spacing: .4px; padding: 10px; border-bottom:  1px solid #e3e7ed;} 
+
+/* Ô dữ liệu: có đường kẻ mờ ngăn cách các dòng */
+td{padding: 13px 10px; border-bottom: 1px solid #edf0f3; font-size: 10px; color:#4c586d;}
+
+/* Rê chuột vào dòng nào thì dòng đó đổi nền */
+tbody tr:hover{background: #f8faff;}
+
+/* Màn hình dưới 700px (điện thoại): xếp lại bố cục */
+@media (max-width: 700px){
+    .toolbar{flex-wrap:wrap;}
+    .toolbar search {width :100%; max-width: none; flex-basis: 100%;}
+    .inline-filters{align-items: stretch; flex-direction: column;}
+}
